@@ -1,0 +1,16 @@
+rr .x -q fake_Estimate_Muon.cc
+rr .x -q fake_Estimate_Electron.cc
+
+rr .x -q fake_Estimate_Loose.cc
+rr .x -q fake_Estimate_Medium.cc
+
+
+rr .x -q fake_Fit_Loose.cc
+rr .x -q fake_Fit_Medium.cc
+
+
+rr .x -q  fake_Apply_FF.cc
+rr .x -q  fake_Apply_FP.cc
+rr .x -q  fake_Apply_PF.cc
+
+rr .x -q  final_Results.cc

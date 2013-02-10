@@ -1,0 +1,14 @@
+svn co -N svn+ssh://svn.cern.ch/reps/tdr2 myDir
+  cd myDir
+  svn update utils
+  svn update -N notes
+  svn update notes/PFT-10-004
+  eval `notes/tdr runtime -csh`
+
+  cd notes/PFT-10-004/trunk
+  tdr --style=note b PFT-10-004
+
+In order to add the new files and commit the changes, please do:
+
+  svn add [filename]
+  svn commit -m 'comment'

@@ -1,0 +1,4 @@
+How to find large file size on linux:
+Find all files that have a size >= 100MB, from root folder and its sub-directories.
+sudo find / -type f -size +100000k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
+

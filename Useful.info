@@ -1,0 +1,15 @@
+How to search in terminal for files
+dbs search --query="find dataset where dataset=/JetMETTau/Run2010A-Jul15thReReco-v1/RECO"  | sort -n
+
+
+How to find large file size on linux:
+Find all files that have a size >= 100MB, from root folder and its sub-directories.
+sudo find / -type f -size +100000k -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
+
+
+Script to make webpage of shapes:
+You need V00-02-11 or later of HiggsAnalysis/HiggsToTauTau (or just take the head)
+Recompile, rehash, then
+shape_audit.py your_datacard_file.root
+python -m SimpleHTTPServer &
+access it from your local machine by typing in this URL in your browser: http://127.0.0.1:8000

@@ -1,0 +1,4 @@
+Useful Commands  for vi editor:
+
+find $ replace:    :%s/FIND/REPLACE/g
+

@@ -1,0 +1,3 @@
+Script for dumping ascii LHE file from a GEN root file
+
+GeneratorInterface/LHEInterface/test/testExternalLHEAsciiDumper_cfg.py

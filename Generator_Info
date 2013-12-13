@@ -1,3 +1,19 @@
 Script for dumping ascii LHE file from a GEN root file
 
 GeneratorInterface/LHEInterface/test/testExternalLHEAsciiDumper_cfg.py
+
+
+MSSM samples:
+
+
+https://github.com/cms-sw/genproductions/blob/master/python/ThirteenTeV/PYTHIA6_Tauola_gg_H160_tautau_13TeV_cff.py
+27392cde014d9ed160f0d92cb2d759444c6d002c
+
+https://github.com/cms-sw/genproductions/blob/master/python/ThirteenTeV/PYTHIA6_Tauola_gg_H500_tautau_13TeV_cff.py
+27392cde014d9ed160f0d92cb2d759444c6d002c
+
+https://github.com/cms-sw/genproductions/blob/master/python/ThirteenTeV/PYTHIA6_Tauola_gg_bbH160_tautau_13TeV_cff.py
+27392cde014d9ed160f0d92cb2d759444c6d002c
+
+https://github.com/cms-sw/genproductions/blob/master/python/ThirteenTeV/PYTHIA6_Tauola_gg_bbH500_tautau_13TeV_cff.py
+27392cde014d9ed160f0d92cb2d759444c6d002c

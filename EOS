@@ -1,0 +1,10 @@
+How to use EOS:
+
+source /afs/cern.ch/project/eos/installation/cms/etc/setup.sh
+
+To gate a list:
+eos ls /eos/cms/store/user/abdollah/
+
+
+
+

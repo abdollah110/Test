@@ -14,6 +14,8 @@ xrdcp skimMuTrg_111_1_xGC.root xroot://eoscms.cern.ch//eos/cms/store/user/abdoll
 Now, copy it back in your directory (download) from EOS:
 xrdcp xroot://eoscms.cern.ch//eos/cms/store/user/abdollah/eos_tutorial/skimMuTrg_111_1_xGC.root  skimMuTrg_111_1_xGC.root
 
+delete afile from eos:
+eos rm (-r)  /eos/cms/store/user/abdollah/Ntuple
 
 
 Please note that:
@@ -22,8 +24,12 @@ eos<experiment>.cern.ch is the host of the EOS (xroot) server
 /eos/<experiment>/user/l/laman/eos_tutorial/eos.txt is the EOS full path
 
 
+EOS has a quota and you can check it with the command "eos quota". Please note that you have a limit on size and on number of files.
 
 
+
+More Info at: 
+http://eos.cern.ch/index.php?option=com_content&view=article&id=87:using-eos-at-cern&catid=31:general&Itemid=41
 
 
 

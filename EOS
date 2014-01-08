@@ -5,6 +5,17 @@ source /afs/cern.ch/project/eos/installation/cms/etc/setup.sh
 To gate a list:
 eos ls /eos/cms/store/user/abdollah/
 
+First of all create a subdirectory on EOS:
+eos mkdir  /eos/cms/store/user/abdollah/eos_tutorial
+
+copy the local file to your EOS directory:
+xrdcp skimMuTrg_111_1_xGC.root xroot://eoscms.cern.ch//eos/cms/store/user/abdollah/eos_tutorial/skimMuTrg_111_1_xGC.root
+
+
+
+
+
+
 
 
 

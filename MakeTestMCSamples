@@ -5,9 +5,19 @@ First test: spin/parity MC samples:
 Input: LHF files from JHU:
 
 https://twiki.cern.ch/twiki/bin/viewauth/CMS/MCProductionforHiggsProperties
+########################################################
+Guide from twiki
+########################################################
+https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideSubgroupMC#1_Preparing_LHE_files
 
-To check the MCDB to EDM  (to sheck the lhe files):
-cmsDriver.py MCDBtoEDM --conditions START53_V7C::All   --eventcontent RAWSIM --datatier GEN --filein file:/tmp/abdollah/VBFHiggs0P_M-125p6_7TeV-JHUGenV4_9.lhe --no_exec -n 1
 
+1) Validation of the lhe files:
+
+cmsDriver.py MCDBtoEDM --conditions START53_V7C::All  -s NONE  --eventcontent RAWSIM --datatier GEN --filein file:/tmp/abdollah/VBFHiggs0P_M-125p6_7TeV-JHUGenV4_9.lhe --no_exec -n 100
+The output would be :    MCDBtoEDM_ALL.py
+Then, cmsRun MCDBtoEDM_NONE.py  --> the out put will be MCDBtoEDM_NONE.root
+
+
+2) Submitting a request in McM
 
 

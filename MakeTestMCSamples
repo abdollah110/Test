@@ -6,3 +6,8 @@ Input: LHF files from JHU:
 
 https://twiki.cern.ch/twiki/bin/viewauth/CMS/MCProductionforHiggsProperties
 
+To check the MCDB to EDM  (to sheck the lhe files):
+cmsDriver.py MCDBtoEDM --conditions START53_V7C::All   --eventcontent RAWSIM --datatier GEN --filein file:/tmp/abdollah/VBFHiggs0P_M-125p6_7TeV-JHUGenV4_9.lhe --no_exec -n 1
+
+
+

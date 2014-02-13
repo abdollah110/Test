@@ -1,0 +1,18 @@
+218365
+Output is in:
+/opt/cmssw/Data/218365/analysis_218365_1392284525.*
+
+
+Difference Machines:
+
+ssh trackerpro@cmsusr.cern.ch
+
+ssh vmepc-s2b17-21-01
+
+PROCESS THE RAW DATA FILES
+
+
+ssh vmepcs2b18-21 [Open tkCommissioner on SLC5 machine]
+
+
+ssh vmepc-s2b17-16-01 (SLC6 machine)

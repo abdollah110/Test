@@ -19,3 +19,7 @@ ls my_list_of_shape_uncertainties* | xargs -n 1 cat >> mega_list.txt
 
 cat my_list_of_shape_uncertainties_*.txt | xargs -n 1 -I {} echo '{} shape' >> unc.conf
 
+ find ~/ -name eventdict.h
+ 
+ 
+

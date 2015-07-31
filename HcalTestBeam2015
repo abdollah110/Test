@@ -1,0 +1,65 @@
+Recipe #3 for processing HCAL H2 Testbeam Data on lxplus:
+
+Compared to Recipe #2, a few scripts have been updated for processing this yearÂ¿s TestBeam data.  Recipes #1 and #2 are now outdated.  These instructions show how to analyze Run 7824.  Other new runs can be analyzed in the same way.  I need to organize this more and put it in github.  This is a first attempt and IÂ¿m sure more work is needed.  (For example, no attempt is made to remove anomalous digis.)
+
+***
+
+#The code is in:  /afs/cern.ch/user/d/dittmann/public/HcalTestBeam/CMSSW_7_5_0/src
+
+#Because of AFS file permission issues, you will need to copy /afs/cern.ch/user/d/dittmann/public/HcalTestBeam/... to your own directory using the following steps.  (You might have disk quota problems on lxplus.  If you have problems, you can increase your quota using the steps below [*])
+
+rsync -av /afs/cern.ch/user/d/dittmann/public/HcalTestBeam [your_destination_directory]
+cd [your_destination_directory]/HcalTestBeam/CMSSW_7_5_0/src
+cmsenv
+scram b ProjectRename
+
+#Note that configQADCTDC.txt should be in [your_destination_directory]/HcalTestBeam/CMSSW_7_5_0/src
+#This file is read during cmsRun.
+
+cd UserCode/H2TestBeamAnalyzer
+
+#Note that EMAP_H2_Arjan_PhiFix.txt should be in
+[your_destination_directory]/HcalTestBeam/CMSSW_7_5_0/src/UserCode/H2TestBeamAnalyzer
+#This is the current emap, which is read during cmsRun.
+
+#Put the testbeam data file (e.g.  HTB_007824.root) in 
+[your_destination_directory]/HcalTestBeam/CMSSW_7_5_0/src/UserCode/H2TestBeamAnalyzer
+#(This particular file originally came from cmshcaltb02.cern.ch:/data/spool/HTB_007824.root)
+
+#Now we are ready for cmsRun:
+
+cmsRun h2testbeamanalyzer_cfg.py 007824 >run_007824.log
+
+#The first argument is the run number, prepended with zeroes to match the filename.
+
+#This cmsRun step will generate a file of the form ana_h2_tb_run007824.root, which can be inspected with e.g. ROOT TBrowser.
+
+#For a lot of diagnostic digi output from cmsRun, use h2testbeamanalyzer_cfg_verbose.py
+
+#Run the following scripts to create histograms from ana_h2_tb_run007824.root:
+
+# Process the file:
+./tb_ana.py --i ana_h2_tb_run007824.root --o ana_tb_out_run7824.root --r 7824 
+
+# Make plots
+./tb_plots.py --i ana_tb_out_run7824.root --o tb_plots_run7824 --r 7824 
+
+# Then, in principle one can use
+./makeHtml.py tb_plots_run7824
+
+# to prepare the plots for a webpage.  However, this step seems to have 
+# problems if one has already used cmsenv on lxplus.  It seems to
+# work in a new shell in which cmsenv has not been used
+
+# At this point, the contents of tb_plots_run7824 should be suitable for use with a web server, if you have some place to copy the files.
+# If not, it is possible to look at files directly using display (e.g. "display *pdf") in a shell where you have not already used cmsenv.
+# One can see the plots from this run here:  http://hep.baylor.edu/cmshcal/HcalTestBeam/tb_plots_run7824
+
+
+[*] Steps for increasing AFS diskquota on lxplus:
+- go to account.cern.ch
+- Click "My Accounts" tab
+- Under "Account Tasks", click "Services..."
+- Under Storage, click on "AFS Workspaces" box
+- Click "Settings" on the left
+- Then it should be clear what to do.

@@ -13,6 +13,7 @@ xrdcp skimMuTrg_111_1_xGC.root xroot://eoscms.cern.ch//eos/cms/store/user/abdoll
 
 Now, copy it back in your directory (download) from EOS:
 xrdcp xroot://eoscms.cern.ch//eos/cms/store/user/abdollah/eos_tutorial/skimMuTrg_111_1_xGC.root  skimMuTrg_111_1_xGC.root
+xrdcp xroot://cms-xrd-global.cern.ch//eos/cms/store/group/phys_smp/ggNtuples/13TeV/data/job_SingleMu_Run2015D_PR_25ns.root SingleMu_Run2015D_PR_25ns.root
 
 delete afile from eos:
 eos rm (-r)  /eos/cms/store/user/abdollah/Ntuple

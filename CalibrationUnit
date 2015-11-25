@@ -8,11 +8,11 @@ source ~daqowner/dist/etc/env.sh
 setupScripts/ccmServeverConnect.sh
 cd setupScript
 ledon.txt
-ccmServeverConnect.sh
+./ccmServeverConnect.sh
 
 #after power cycle
 
-<HEsetupWH14 thermalTest.txt
+<HEsetupWH14_thermalTest.txt
 <Peltier1on.txt
 <Peltier2on.txt
 <Peltier3on.txt

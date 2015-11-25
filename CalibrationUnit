@@ -1,4 +1,88 @@
+username:HcalPro
+passwd:2013%hcalpro
+
+
+
+cd HEprototypeTesting
+source ~daqowner/dist/etc/env.sh
+setupScripts/ccmServeverConnect.sh
+cd setupScript
+ledon.txt
+ccmServeverConnect.sh
+
+#after power cycle
+
+<HEsetupWH14 thermalTest.txt
+<Peltier1on.txt
+<Peltier2on.txt
+<Peltier3on.txt
+
+>
+Good to check:
+get HE1-[1-4]-temperature_f
+
+<ledon.txt
+quit
+
+
+###### ##############################
+cd ..
+mkdir CMtest
+uTTRTool.exe  192.168:41.16
+link
+status
+init
+1 45  0  0   1
+histo
+
+integrate
+
+numberofOrbits: 100000
+
+
+enter
+filename
+
+
+x - axis RAW ADC reading
+
+
+
+
+Trigger data:
+L1ACapture
+AutoRun
+100
+20
+20 (up yo 100)
+0
+test.root
+3,15,16,17,18,19,20
+... taking data
+
+test.root
+test.root
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Here is the description of Calibration Units and all I am learining during working on that
+
+
 
 *LASER vs. LED: What’s the Difference?*
 

@@ -19,7 +19,7 @@ ledon.txt
 
 >
 Good to check:
-get HE1-[1-4]-temperature_f
+get HE1-[1-4]_temperature_f
 
 <ledon.txt
 quit
@@ -64,6 +64,17 @@ test.root
 test.root
 
 
+
+
+
+5-12:  TimingThresholdDAC<0:7>:  8-bit threshold DAC for the timing circuit.  The
+Change the TDC threshold:
+
+put HE1-1-QIE[1-48]_TimingThresholdDAQ   48*128
+
+
+Shunt: 
+put HE1-1-QIE[1-48]_Gsel   48*5
 
 
 

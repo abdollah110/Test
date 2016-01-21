@@ -1,0 +1,97 @@
+2HDM-XSection
+
+Steps toward computing the XSection for 2HDM
+
+Special thanks to Stefano Lacaprara lacaprara@pd.infn.it INFN Padova
+
+---#########################################################################################
+
+1) Get the latest version of the 2HDMC from the following link:
+
+https://www.hepforge.org/downloads/2hdmc
+
+---> wget www.hepforge.org/archive/2hdmc/2HDMC-1.6.5.tar.gz
+
+---> tar -zxvf 2HDMC-1.6.5.tar.gz
+
+---> cd 2HDMC-1.6.5
+
+edit the Makefile and add the following lines in Makefile:
+
+CFLAGS+=-I/afs/cern.ch/work/a/abdollah/scratch1/2HDM-XSection/local/include
+
+CFLAGS+=-L/afs/cern.ch/work/a/abdollah/scratch1/2HDM-XSection/local/lib
+
+---> make
+
+this produces a set of executable (as ./Demo) that you can use
+
+---############################################################################################
+
+2) Get he latest version of the lhapdf from the following link:
+
+www.hepforge.org/archive/lhapdf/lhapdf-5.9.1.tar.gz
+
+---> wget www.hepforge.org/archive/lhapdf/lhapdf-5.9.1.tar.gz
+
+---> tar -zxvf lhapdf-5.9.1.tar.gz
+
+---> cd lhapdf-5.9.1
+
+---> ./configure --prefix=/afs/cern.ch/work/a/abdollah/scratch1/2HDM-XSection/local
+
+---> make
+
+---> make install
+
+This will produce lots of filens in the ../local directories [needed for Sushi compilation!]
+
+---############################################################################################
+
+3) Get the latest version of the Sushi from the following Link:
+
+https://www.hepforge.org/downloads/sushi
+
+---> wget www.hepforge.org/archive/sushi/SusHi-1.5.0.tar.gz
+
+---> tar -zxvf SusHi-1.5.0.tar.gz
+
+---> cd SusHi-1.5.0
+
+---> unset LHAPATH
+
+edit Make file with the following:
+
+LHAPATH =/afs/cern.ch/work/a/abdollah/scratch1/2HDM-XSection/local/lib [note about the lib at the end!!]
+
+LHAPDF_CONFIG=./lhapdf-config
+
+also change the 2HDMC version
+
+ln -s ../local/bin/lhapdf-config .
+
+---> make predef=2HDMC [This is for 2HDMC]
+
+---> make install [Not needed]
+
+---############################################################################################
+
+4) Downloading the PDF files
+
+--> cd /afs/cern.ch/work/a/abdollah/scratch1/2HDM-XSection/local/share/lhapdf
+
+--> ../../bin/lhapdf-getdata cteq6 NNPDF20 MSTW2008lo90cl MSTW2008nlo90cl MSTW2008nnlo90cl MSTW2008lo68cl MSTW2008nlo68cl MSTW2008nnlo68cl
+
+--> mkdir PDFsets ; mv .LH PDFsets/.
+
+---############################################################################################
+
+5) Make a test to see if everything is working:
+
+---> cd SusHi-1.5.0
+
+---> bin/sushi.2HDMC example/2HDM.in 2HDM_test.out
+
+---############################################################################################
+
+6) Start making the GRid and submitting on lxBatch

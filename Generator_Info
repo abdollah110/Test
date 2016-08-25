@@ -2,18 +2,40 @@ Script for dumping ascii LHE file from a GEN root file
 
 GeneratorInterface/LHEInterface/test/testExternalLHEAsciiDumper_cfg.py
 
+https://twiki.cern.ch/twiki/bin/viewauth/CMS/MbjaSamples
 
-MSSM samples:
-https://cms-pdmv.cern.ch/mcm/requests?dataset_name=*SUSY*&page=0
 
-https://github.com/cms-sw/genproductions/blob/master/python/ThirteenTeV/PYTHIA6_Tauola_gg_H160_tautau_13TeV_cff.py
-27392cde014d9ed160f0d92cb2d759444c6d002c
+LHE Text Files to LHE:
+cmsDriver.py step1 --filein file:events.lhe  --fileout file:LHE.root --mc --eventcontent LHE --datatier LHE 
+--conditions MCRUN2_71_V1::All --step NONE --python_filename LHE_cfg.py --no_exec 
+--customise Configuration/DataProcessing/Utils.addMonitoring -n -1
 
-https://github.com/cms-sw/genproductions/blob/master/python/ThirteenTeV/PYTHIA6_Tauola_gg_H500_tautau_13TeV_cff.py
-27392cde014d9ed160f0d92cb2d759444c6d002c
 
-https://github.com/cms-sw/genproductions/blob/master/python/ThirteenTeV/PYTHIA6_Tauola_gg_bbH160_tautau_13TeV_cff.py
-27392cde014d9ed160f0d92cb2d759444c6d002c
-
-https://github.com/cms-sw/genproductions/blob/master/python/ThirteenTeV/PYTHIA6_Tauola_gg_bbH500_tautau_13TeV_cff.py
-27392cde014d9ed160f0d92cb2d759444c6d002c
+ LHE to GEN-SIM:
+ cmsDriver.py Configuration/GenProduction/python/fragment.py --filein file:LHE.root --fileout file:GEN-SIM.root --mc --eventcontent RAWSIM 
+ --customise SLHCUpgradeSimulations/Configuration/postLS1Customs.customisePostLS1,Configuration/DataProcessing/Utils.addMonitoring 
+ --datatier GEN-SIM --conditions MCRUN2_71_V1::All --beamspot Realistic50ns13TeVCollision --step GEN,SIM --magField 38T_PostLS1 
+ --python_filename GEN-SIM_cfg.py --no_exec -n -1
+ 
+ 
+ GEN-SIM to DIGI-RECO_1: 
+ cmsDriver.py step1 --filein file:GEN-SIM.root --fileout file:DIGI-RECO_step1.root 
+ --pileup_input "dbs:/MinBias_TuneCUETP8M1_13TeV-pythia8/RunIISummer15GS-MCRUN2_71_V1-v2/GEN-SIM" 
+ --mc --eventcontent RAWSIM --pileup 2016_25ns_SpringMC_PUScenarioV1_PoissonOOTPU --datatier GEN-SIM-RAW 
+ --conditions 80X_mcRun2_asymptotic_2016_v3 --step DIGI,L1,DIGI2RAW,HLT:@frozen25ns --era Run2_25ns 
+ --python_filename DIGI-RECO_1_cfg.py --no_exec --customise Configuration/DataProcessing/Utils.addMonitoring -n -1
+ 
+ 
+ DIGI-RECO_1 to DIGI-RECO_2 (AOD) :
+ cmsDriver.py step2 --filein file:DIGI-RECO_step1.root --fileout file:DIGI-RECO.root --mc --eventcontent AODSIM,DQM --runUnscheduled
+ --datatier AODSIM,DQMIO --conditions 80X_mcRun2_asymptotic_2016_v3 --step RAW2DIGI,L1Reco,RECO,EI,DQM:DQMOfflinePOGMC --era Run2_25ns
+ --python_filename DIGI-RECO_2_cfg.py --no_exec --customise Configuration/DataProcessing/Utils.addMonitoring -n -1
+ 
+ AOD to MiniAODv2 :
+ cmsDriver.py step1 --filein file:DIGI-RECO.root --fileout file:MiniAODv2.root --mc --eventcontent MINIAODSIM --runUnscheduled 
+ --datatier MINIAODSIM --conditions 80X_mcRun2_asymptotic_2016_miniAODv2_v0 --step PAT --era Run2_25ns
+ --python_filename MiniAODv2_1_cfg.py --no_exec --customise Configuration/DataProcessing/Utils.addMonitoring -n -1
+ 
+ 
+ 
+ 

@@ -2,6 +2,42 @@ Script for dumping ascii LHE file from a GEN root file
 
 GeneratorInterface/LHEInterface/test/testExternalLHEAsciiDumper_cfg.py
 
+
+producing the LHE files using Madgraph:
+My collaborators, Maikel de Vries and Anna Kaminska, have started putting our UFO models (for MadGraph5 simulation on the Feynrules website, https://feynrules.irmp.ucl.ac.be/wiki/SimplifiedDM , but for your convenience, I've attached directly the model files for the leptoquark signal.
+
+
+Maikel has also written some instructions for how to run MadGraph5 to generate our signal events:
+
+
+First, download and unzip the MadGraph5 program
+
+https://launchpad.net/mg5amcnlo .  Then, you need to unzip and put the resulting lq_met directory in "MG5_aMC_v2_3_3/models/" subdirectory of the MadGraph5 directory. 
+
+
+
+
+You can then run the Madgraph5 executable by going to "MG5_aMC_v2_3_3/bin/mg5_aMC", which opens up a "MG5_aMC>" prompt, that takes the following commands:
+
+
+
+To generate mixed signature for the
+leptoquark (1st generation), you can use:
+
+
+import model lq_met
+define sm = u u~ d d~ e+ e- ve ve~
+
+generate    p p > m1 m1~ QCD=2 QED=0 NP=0, m1  > sm sm, (m1~ > ~dm ~x1~, ~x1~ > sm sm ~dm)
+add process p p > m1 m1~ QCD=2 QED=0 NP=0, m1~ > sm sm, (m1  > ~dm ~x1 , ~x1  > sm sm ~dm)
+add process p p > m2 m2~ QCD=2 QED=0 NP=0, m2  > sm sm, (m2~ > ~dm ~x2~, ~x2~ > sm sm ~dm)
+add process p p > m2 m2~ QCD=2 QED=0 NP=0, m2~ > sm sm, (m2  > ~dm ~x2 , ~x2  > sm sm ~dm)
+
+output pp_mm_mix_gen1_lq
+
+
+
+
 https://twiki.cern.ch/twiki/bin/viewauth/CMS/MbjaSamples
 
 

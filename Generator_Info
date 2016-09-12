@@ -74,4 +74,5 @@ cmsDriver.py step1 --filein file:events.lhe  --fileout file:LHE.root --mc --even
  
  
  
+ https://github.com/CMS-SUS-XPAG/GenLHEfiles/blob/master/Run2Mechanism/README.md#gen-only
  

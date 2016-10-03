@@ -27,6 +27,8 @@ leptoquark (1st generation), you can use:
 
 import model lq_met
 define sm = u u~ d d~ e+ e- ve ve~
+define sm = c c~ s s~ mu+ mu- vm vm~
+
 
 generate    p p > m1 m1~ QCD=2 QED=0 NP=0, m1  > sm sm, (m1~ > ~dm ~x1~, ~x1~ > sm sm ~dm)
 add process p p > m1 m1~ QCD=2 QED=0 NP=0, m1~ > sm sm, (m1  > ~dm ~x1 , ~x1  > sm sm ~dm)

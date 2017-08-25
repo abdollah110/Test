@@ -1,4 +1,24 @@
 Useful Commands  for vi editor:
 
 find $ replace:    :%s/FIND/REPLACE/g
+finad $ replace  :%s/# XXXXX #/replace
+
+Add something at the end of a line :%norm A*
+
+
+
+If u want to add Hello world at the end of each line:
+
+:%s/$/HelloWorld/
+
+If you want to do this for specific number of line say, from 20 to 30 use:
+
+:20,30s/$/HelloWorld/
+
+If u want to do this at start of each line then use:
+
+:20,30s/^/HelloWorld/
+
+
+
 

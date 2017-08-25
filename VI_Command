@@ -19,6 +19,9 @@ If u want to do this at start of each line then use:
 
 :20,30s/^/HelloWorld/
 
+To replace /   one should ad \/
+
+
 
 
 

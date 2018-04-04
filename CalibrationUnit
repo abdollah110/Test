@@ -1,3 +1,17 @@
+Restart the ngccm
+ ps aux | grep ngccm  [check if this client exist]
+sudo -u hcalpro ~hcalpro/start_ngccm_hb904_4.sh
+
+
+
+
+1. cvs update
+2. cvs commit -m “changes” myconfig.cfg
+3. cvs tag -F pro myconfig.cfg
+
+
+
+
 username:HcalPro
 passwd:2013%hcalpro
 

@@ -1,0 +1,4 @@
+Running jobs locally
+
+#cmsRun make_ntuples_cfg.py channels="tt,mt" paramFile=../python/parameters/ztt.py isMC=1 fullJES=0 skipMET=1 htt=1 isLFV=0 runMVAMET=0 runningLocal=1 inputFiles=file:/afs/hep.wisc.edu/home/abdollah/BE7AD4E1-BAE5-E611-8FBD-001E67E5EAF0.root  maxEvents=1000
+

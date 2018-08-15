@@ -1,5 +1,9 @@
 How to search in terminal for files
-dbs search --query="find dataset where dataset=/JetMETTau/Run2010A-Jul15thReReco-v1/RECO"  | sort -n
+[This is outdated] dbs search --query="find dataset where dataset=/JetMETTau/Run2010A-Jul15thReReco-v1/RECO"  | sort -n
+
+dasgoclient --query="dataset dataset=/DarkMatter_Codex_LQ*_TuneCP5_13TeV-madgraph/RunIIFall17MiniAOD*/MINIAODSIM"
+
+
 
 
 How to find large file size on linux:
